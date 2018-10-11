@@ -8,11 +8,12 @@ public class AddObjectToList : MonoBehaviour {
     public GameObject ItemTemplate;
     public GameObject Content;
 
-    public void AddButton_Click()
+    public void AddButton_Click(CardItem info)
     {
         GameObject copy = Instantiate(ItemTemplate);
         copy.transform.SetParent(Content.transform);
-        copy.GetComponentInChildren<Text>().text = (index + 1).ToString();
+        copy.GetComponentInChildren<Text>().text = info.name;
+        copy.GetComponent<Image>().color = info.color;
         index++;
 
     }

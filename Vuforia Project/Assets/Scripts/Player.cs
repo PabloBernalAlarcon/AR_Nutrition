@@ -81,6 +81,7 @@ public class Player : MonoBehaviour {
         t.text += "The list has: \n";
         foreach (KeyValuePair<string,List<GameObject>> item in BackPack)
         {
+            //changes a string to an emun.
             Utility.FoodType fd= (Utility.FoodType)System.Enum.Parse(typeof(Utility.FoodType), item.Key);
             //CurrentObjects[(int)fd] = 1;
             //CurrentObjects[];
@@ -91,7 +92,7 @@ public class Player : MonoBehaviour {
                 CurrentObjects[(int)fd]++;
             }
         }
-
+        
         EventManager.TriggerEvent("Compare");
     }
 }

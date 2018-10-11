@@ -9,10 +9,12 @@ public class ItemGrabber : MonoBehaviour {
     Text t;
     Camera camera;
     Player player;
+    AddObjectToList AddObjectHandler;
     private void Start()
     {
         camera = GetComponent<Camera>();
         player = GetComponent<Player>();
+        AddObjectHandler = GetComponent<AddObjectToList>();
     }
 
 
@@ -32,6 +34,7 @@ public class ItemGrabber : MonoBehaviour {
                     {
                         player.AddItemToBackPack(hit.transform.gameObject);
                         hit.transform.GetComponent<CardItem>().visited = true;
+                        AddObjectHandler.AddButton_Click(hit.transform.GetComponent<CardItem>());
                     }
                     else
                         print("Oof, you already have this item...");
@@ -47,7 +50,7 @@ public class ItemGrabber : MonoBehaviour {
 
         if (Input.GetKeyDown(KeyCode.Mouse1))
         {
-            player.PrintBackPackElements(t);
+            //player.PrintBackPackElements(t);
         }
 
         

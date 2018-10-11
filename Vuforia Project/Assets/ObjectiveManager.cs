@@ -9,6 +9,8 @@ public class ObjectiveManager : MonoBehaviour {
     //a value of 0 means that food group is not required.
     //a value between 1 and 5 means that that should be the total collected items of that specific group.
     private int[] howMany = new int[5];
+    [SerializeField]
+    AddObjectToList ListAdder;
 
     public int[] HowMany
     {
@@ -27,9 +29,24 @@ public class ObjectiveManager : MonoBehaviour {
         }
         
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
+    private void Start()
+    {
+        PopulateObjective();
+    }
+    void PopulateObjective()
+    {
+        for (int i = 0; i < howMany.Length; i++)
+        {
+            if(howMany[i] != 0)
+            {
+                CardItem CI = new GameObject(((Utility.FoodType)i).ToString()).AddComponent<CardItem>();
+               
+                CI.Setup((Utility.FoodType)i, ((Utility.FoodType)i).ToString(),Utility.FoodColor[i]);
+                ListAdder.AddButton_Click(CI);
+            }
+
+        }
+        
+    }
 }
