@@ -14,6 +14,14 @@ public class AddObjectToList : MonoBehaviour {
         copy.transform.SetParent(Content.transform);
         copy.GetComponentInChildren<Text>().text = info.name;
         copy.GetComponent<Image>().color = info.color;
+        copy.transform.localScale = Vector3.one;
+        int copyofindex = index;
+        copy.GetComponent<Button>().onClick.AddListener(
+            () =>
+            {
+                Debug.Log("Index number: " + copyofindex);
+            }
+            );
         index++;
 
     }
