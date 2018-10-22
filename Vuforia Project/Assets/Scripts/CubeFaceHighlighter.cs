@@ -21,10 +21,11 @@ public class CubeFaceHighlighter : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-       // if (Input.GetKeyDown(KeyCode.Mouse0))
-       // {
+     
+        //ray to check the surface of the cube
             RaycastHit hit;
-        Ray ray;
+             Ray ray;
+        //we check the mose if we're on the editor, camera otherwise.
         if (DebbugingOnEditor)
              ray = camera.ScreenPointToRay(Input.mousePosition);
         else
@@ -33,34 +34,36 @@ public class CubeFaceHighlighter : MonoBehaviour {
         
             if (Physics.Raycast(ray, out hit))
             {
+            //get the buildablecubecomponent.
                 BuildableCube MyB = hit.transform.GetComponent<BuildableCube>();
                 if (MyB)
                 {
-                //    GameObject temp;
+              
                 //        Debug.DrawLine(hit.point, hit.transform.position, Color.red);
-                //FaceBall.transform.position = hit.point;
                     FaceBall.transform.position = CompareVectors(hit.point,hit.transform, MyB);
-                    if (Input.GetKeyDown(KeyCode.Mouse0))
+                    if (CreateC)
                     {
                     CreateCube(hit.point, hit.transform, daddy, MyB);
-                    //       temp = Instantiate(CubeToSpawn/*hit.transform.gameObject*/,daddy);
-                    //       temp.transform.position = hit.transform.position + Offset;
+                    CreateC = false;
+                  
 
                     }
-                    else if (Input.GetKeyDown(KeyCode.Mouse1) && MyB.Destructible)
+                    else if (EraseC && MyB.Destructible)
                     {
                     Destroy(hit.transform.gameObject);
+                    EraseC = false;
                     }
-                }
+
+                CreateC = EraseC = false;
+            }
             }
             else
             {
             FaceBall.transform.position = new Vector3(9999999, 9999999, 99999);
-              //  print("I see no face");
+            CreateC = EraseC = false;
             }
 
         
-       // }
     }
 
     Vector3 CompareVectors(Vector3 item, Transform Position,BuildableCube toCompare)
@@ -112,7 +115,15 @@ public class CubeFaceHighlighter : MonoBehaviour {
         //temp.transform.position = Position.position + Offset;
         
     }
-
-
+    bool CreateC = false;
+    public void Create()
+    {
+        CreateC = true;
+    }
+    bool EraseC = false;
+    public void Erase()
+    {
+        EraseC = true;
+    }
    
 }
