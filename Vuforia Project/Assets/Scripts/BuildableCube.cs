@@ -39,10 +39,10 @@ public class BuildableCube : MonoBehaviour {
     }
 
 
-    private void Update()
-    {
-        updateFaces();
-
-       // transform.Rotate(0, Time.deltaTime * 3, 0);
-    }
+   // private void Update()
+   // {
+   //     updateFaces();
+   //
+   //    // transform.Rotate(0, Time.deltaTime * 3, 0);
+   // }
 }
