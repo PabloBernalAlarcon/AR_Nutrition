@@ -10,6 +10,7 @@ TagManager:
   - Vegetable
   - Fruit
   - Grain
+  - Rocket
   layers:
   - Default
   - TransparentFX
