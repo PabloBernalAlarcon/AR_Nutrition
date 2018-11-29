@@ -98,10 +98,12 @@ public class Rocket : MonoBehaviour {
         yield return new WaitForSeconds(3);
         //detach piece
         SD.Detach();
+        Handheld.Vibrate();
         yield return new WaitForSeconds(15);
         //start counting and detach
         CountText.StartCounting();
         yield return new WaitForSeconds(3);
         SD.Detach();
+        Handheld.Vibrate();
     }
 }
