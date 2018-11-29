@@ -5,7 +5,7 @@ using UnityEngine;
 public class ButtonControlPanel : MonoBehaviour {
 
     public LightSwitch[] Switches;
-	
+    public FinalCheckButton FBC;
     public bool CheckRequirements()
     {
         int x = 0;
@@ -19,23 +19,13 @@ public class ButtonControlPanel : MonoBehaviour {
 
         if (x == Switches.Length)
         {
-           // GetComponent<AudioSource>().Play();
-            StartCoroutine(Lol());
+            FBC.Dissappear();
             return true;
         }
 
         return false;
     }
 
-    public void Dissappear()
-    {
-        StartCoroutine(Lol());
-    }
+   
 
-    IEnumerator Lol()
-    {
-        // yield return new WaitUntil(() => !GetComponent<AudioSource>().isPlaying);
-        yield return null;
-        GetComponent<Animator>().SetTrigger("Shrink");
-    }
 }

@@ -9,26 +9,34 @@ public class Rocket : MonoBehaviour {
     ParticleSystem ps;
     AudioSource AS;
     bool fl;
+
+    SystemsDetached SD;
+    public Countdown CountText;
     public bool FlyAnim;
+    public CPC_CameraPath CameraPath;
 	// Use this for initialization
 	void Start () {
         rb = GetComponent<Rigidbody>();
         cp = GetComponent<BoxCollider>();
-        ps = GetComponent<ParticleSystem>();
+        ps = transform.GetChild(2).GetComponent<ParticleSystem>();
+        SD = GetComponent<SystemsDetached>();
         AS = GetComponent<AudioSource>();
         initialP = transform.position;
         ps.Stop();
         
     }
-	
+
+    float increment = 1;
 	// Update is called once per frame
 	void FixedUpdate () {
         if (  FlyAnim && cp.enabled)
         {
+            if (increment <= 2)
+                increment += Time.deltaTime;
+            // rb.useGravity = true;
+            // rb.AddForce(transform.parent.up.normalized * 10, ForceMode.Force);
 
-            rb.useGravity = true;
-            rb.AddForce(transform.parent.up.normalized * 10, ForceMode.Force);
-           // AS.Play();
+            // transform.position += new Vector3(0, Time.deltaTime*5*increment, 0);
         }
        
 	}
@@ -54,26 +62,46 @@ public class Rocket : MonoBehaviour {
 
     public void ResetRocket()
     {
-        rb.velocity = Vector3.zero;
+       // rb.velocity = Vector3.zero;
             transform.position = initialP;
         stopfly();
         
     }
-
+    bool isdone;
     public void AnimateFlight()
     {
+        if (isdone)
+            return;
         if (cp.enabled)
         {
             StartCoroutine(lol());
+            isdone = true;
         }
     }
 
     IEnumerator lol()
     {
         AS.Play();
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(1);
+        //start countdown
+        CountText.StartCounting(10);
+        yield return new WaitForSeconds(4);
+        //start engines
         ps.Play();
-        yield return new WaitForSeconds(9);
-        FlyAnim = true;
+        yield return new WaitForSeconds(8);
+        //fly away
+        //FlyAnim = true;
+        CameraPath.PlayPath(55);
+        yield return new WaitForSeconds(15);
+        //start coundown again
+        CountText.StartCounting();
+        yield return new WaitForSeconds(3);
+        //detach piece
+        SD.Detach();
+        yield return new WaitForSeconds(15);
+        //start counting and detach
+        CountText.StartCounting();
+        yield return new WaitForSeconds(3);
+        SD.Detach();
     }
 }
