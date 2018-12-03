@@ -19,7 +19,8 @@ public class ButtonControlPanel : MonoBehaviour {
 
         if (x == Switches.Length)
         {
-            FBC.Dissappear();
+            //  FBC.Dissappear();
+            FBC.flip();
             return true;
         }
 

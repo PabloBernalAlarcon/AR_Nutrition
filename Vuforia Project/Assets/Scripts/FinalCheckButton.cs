@@ -6,11 +6,16 @@ public class FinalCheckButton : MonoBehaviour {
 
     public void Dissappear()
     {
-        GetComponent<Animator>().SetTrigger("Shrink");
-
+        
+        GetComponent<RectTransform>().position = new Vector3(99999, 9999999);
     }
    
-
+    public void flip()
+    {
+        GetComponent<Animator>().SetTrigger("Shrink");
+        if (GetComponent<AudioSource>())
+            GetComponent<AudioSource>().Play();
+    }
 
     public void DissappearSound()
     {

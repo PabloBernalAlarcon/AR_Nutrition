@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Main Menu.unity
     guid: 750772b1e57fc884b91dc46c10c50376
   - enabled: 1
+    path: Assets/Scenes/Loading.unity
+    guid: 5d47890a0b14d77458d2f7eac6433cff
+  - enabled: 1
     path: Assets/Scenes/CubeAR.unity
     guid: 2c030754dd22ba949bb5b4e55aabb219
   - enabled: 1

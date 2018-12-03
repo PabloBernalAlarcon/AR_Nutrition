@@ -29,11 +29,14 @@ public class Countdown : MonoBehaviour {
     {
         for (int i = 0; i < number; i++)
         {
+            if (number -i <= 3)
+                t.color = Color.red;
             AS.Play();
             t.text = (number - i).ToString();
         anim.Play("count");
             yield return new WaitForSeconds(1);
         }
+        t.color = Color.black;
         yield return null;
     }
 }

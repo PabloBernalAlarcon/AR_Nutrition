@@ -14,6 +14,7 @@ public class Rocket : MonoBehaviour {
     public Countdown CountText;
     public bool FlyAnim;
     public CPC_CameraPath CameraPath;
+    public Animator DeployButtonCover;
 	// Use this for initialization
 	void Start () {
         rb = GetComponent<Rigidbody>();
@@ -92,18 +93,18 @@ public class Rocket : MonoBehaviour {
         //fly away
         //FlyAnim = true;
         CameraPath.PlayPath(55);
-        yield return new WaitForSeconds(15);
-        //start coundown again
-        CountText.StartCounting();
-        yield return new WaitForSeconds(3);
-        //detach piece
-        SD.Detach();
-        Handheld.Vibrate();
-        yield return new WaitForSeconds(15);
-        //start counting and detach
-        CountText.StartCounting();
-        yield return new WaitForSeconds(3);
-        SD.Detach();
-        Handheld.Vibrate();
+
+        for (int i = 0; i < 2; i++)
+        {
+            yield return new WaitForSeconds(15);
+            //start coundown again
+            DeployButtonCover.Play("shrink away");
+            CountText.StartCounting();
+            yield return new WaitForSeconds(3);
+            //detach piece
+            DeployButtonCover.Play("unfold");
+            SD.Detach();
+            Handheld.Vibrate();
+        }
     }
 }

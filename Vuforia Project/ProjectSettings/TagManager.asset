@@ -11,6 +11,7 @@ TagManager:
   - Fruit
   - Grain
   - Rocket
+  - Speaker
   layers:
   - Default
   - TransparentFX
