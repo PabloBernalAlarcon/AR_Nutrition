@@ -31,6 +31,7 @@ public class FadeEffect : MonoBehaviour {
             // set color with i as alpha
             c.a = i;
             SR.GetComponent<SpriteRenderer>().color = c;
+            SR.GetComponentInChildren<Text>().color = c;
             yield return null;
         }
     }
@@ -46,6 +47,7 @@ public class FadeEffect : MonoBehaviour {
             // set color with i as alpha
             c.a = i;
             SR.color = c;
+            SR.GetComponentInChildren<Text>().color = c;
             yield return null;
         }
 

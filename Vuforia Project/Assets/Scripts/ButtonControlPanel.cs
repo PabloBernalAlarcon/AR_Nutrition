@@ -6,6 +6,7 @@ public class ButtonControlPanel : MonoBehaviour {
 
     public LightSwitch[] Switches;
     public FinalCheckButton FBC;
+    public ScrollingText ST;
     public bool CheckRequirements()
     {
         int x = 0;
@@ -21,6 +22,8 @@ public class ButtonControlPanel : MonoBehaviour {
         {
             //  FBC.Dissappear();
             FBC.flip();
+            ST.StopAllCoroutines();
+            ST.UpdateText("All systems in order. Ready to launch...");
             return true;
         }
 

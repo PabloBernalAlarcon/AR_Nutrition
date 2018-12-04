@@ -15,6 +15,8 @@ public class FinalCheckButton : MonoBehaviour {
         GetComponent<Animator>().SetTrigger("Shrink");
         if (GetComponent<AudioSource>())
             GetComponent<AudioSource>().Play();
+
+
     }
 
     public void DissappearSound()
