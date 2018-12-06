@@ -9,11 +9,15 @@ public class LoadingScript : MonoBehaviour {
    
     public Slider slide;
     AsyncOperation async;
-
-
+    public Transform Target;
+    public Transform rocket;
+    Vector3 initpos;
+    float delta;
     private void Start()
     {
         LoadStuff();
+        initpos = rocket.position;
+       // delta = Target.position.y - rocket.position.y;
     }
     void LoadStuff()
     {
@@ -27,10 +31,12 @@ public class LoadingScript : MonoBehaviour {
 
         while (!async.isDone)
         {
-            slide.value = async.progress;
+           // slide.value = async.progress;
+
+            rocket.position = Vector3.Lerp(initpos, Target.position, async.progress);
             if (async.progress >= 0.9f)
             {
-                slide.value = 1f;
+               // slide.value = 1f;
                 async.allowSceneActivation = true;
             }
 

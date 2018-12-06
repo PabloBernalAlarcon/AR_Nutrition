@@ -39,6 +39,8 @@ public class Rocket : MonoBehaviour {
 
             // transform.position += new Vector3(0, Time.deltaTime*5*increment, 0);
         }
+
+      
        
 	}
 

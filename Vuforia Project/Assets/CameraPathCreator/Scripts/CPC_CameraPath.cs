@@ -230,9 +230,10 @@ public class CPC_CameraPath : MonoBehaviour
             currentTimeInWaypoint = 0;
             while (currentTimeInWaypoint < 1)
             {
-                if (!paused)
+                if (!paused && selectedCamera != null)
                 {
                     currentTimeInWaypoint += Time.deltaTime / timePerSegment;
+                   
                     selectedCamera.transform.position = GetBezierPosition(currentWaypointIndex, currentTimeInWaypoint);
                     if (!lookAtTarget)
                         selectedCamera.transform.rotation = GetLerpRotation(currentWaypointIndex, currentTimeInWaypoint);
