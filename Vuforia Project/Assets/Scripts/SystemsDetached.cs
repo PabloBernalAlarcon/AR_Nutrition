@@ -8,7 +8,7 @@ public class SystemsDetached : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < 2; i++)
         {
             RocketPieces.Push(transform.GetChild(i).GetComponent<RocketPiece>());
         }

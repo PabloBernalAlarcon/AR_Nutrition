@@ -36,9 +36,10 @@ public class RocketPiece : MonoBehaviour {
        var par = PS.main;
         par.loop = false;
        // PS.Stop();
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(3);
         AS.Play();
-      transform.parent = null;
+        Handheld.Vibrate();
+        transform.parent = null;
         detahed = true;
         yield return new WaitForSeconds(1);
         _ps.Play();

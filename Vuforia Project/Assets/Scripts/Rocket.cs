@@ -19,7 +19,7 @@ public class Rocket : MonoBehaviour {
 	void Start () {
         rb = GetComponent<Rigidbody>();
         cp = GetComponent<BoxCollider>();
-        ps = transform.GetChild(2).GetComponent<ParticleSystem>();
+        ps = transform.GetChild(1).GetComponent<ParticleSystem>();
         SD = GetComponent<SystemsDetached>();
         AS = GetComponent<AudioSource>();
         initialP = transform.position;
@@ -94,11 +94,11 @@ public class Rocket : MonoBehaviour {
         yield return new WaitForSeconds(8);
         //fly away
         //FlyAnim = true;
-        CameraPath.PlayPath(55);
+        CameraPath.PlayPath(40);
 
-        for (int i = 0; i < 2; i++)
+        for (int i = 0; i < 1; i++)
         {
-            yield return new WaitForSeconds(15);
+            yield return new WaitForSeconds(17);
             //start coundown again
             DeployButtonCover.Play("shrink away");
             CountText.StartCounting();
@@ -106,7 +106,7 @@ public class Rocket : MonoBehaviour {
             //detach piece
             DeployButtonCover.Play("unfold");
             SD.Detach();
-            Handheld.Vibrate();
+            
         }
     }
 }
