@@ -95,7 +95,7 @@ public class Rocket : MonoBehaviour {
         //fly away
         //FlyAnim = true;
         CameraPath.PlayPath(40);
-
+        
         for (int i = 0; i < 1; i++)
         {
             yield return new WaitForSeconds(17);
