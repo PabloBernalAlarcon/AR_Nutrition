@@ -10,11 +10,16 @@ public class Rocket : MonoBehaviour {
     AudioSource AS;
     bool fl;
 
+
+    public delegate void ChangeColor();
+    public static event ChangeColor fadeOut;
+
     SystemsDetached SD;
     public Countdown CountText;
     public bool FlyAnim;
     public CPC_CameraPath CameraPath;
     public Animator DeployButtonCover;
+    public GrowAndBye GB;
 	// Use this for initialization
 	void Start () {
         rb = GetComponent<Rigidbody>();
@@ -94,6 +99,8 @@ public class Rocket : MonoBehaviour {
         yield return new WaitForSeconds(8);
         //fly away
         //FlyAnim = true;
+        if (fadeOut != null)
+            fadeOut();
         CameraPath.PlayPath(40);
         
         for (int i = 0; i < 1; i++)

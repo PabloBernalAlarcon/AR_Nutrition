@@ -5,11 +5,13 @@ using UnityEngine.UI;
 public class Speaker : MonoBehaviour {
 
     public GameObject Blocker;
-
+    Image img;
     Animator anim;
 	// Use this for initialization
 	void Start () {
         anim = GetComponent<Animator>();
+        img = GetComponent<Image>();
+        img.color = new Color(img.color.r, img.color.g, img.color.b, 0);
 	}
 	
 	// Update is called once per frame
@@ -24,14 +26,15 @@ public class Speaker : MonoBehaviour {
 
    public IEnumerator SpeakPlease(AudioSource AS,bool blockPlayer = true)
     {
-      
 
+        img.color = new Color(img.color.r, img.color.g, img.color.b, 1);
         AS.Play();
         if(blockPlayer)
             Blocker.SetActive(true);
         anim.Play("Speak");
         yield return new WaitUntil(() => !AS.isPlaying);
         anim.Play("Idle");
+        img.color = new Color(img.color.r, img.color.g, img.color.b, 0);
         Blocker.SetActive(false);
     }
    
