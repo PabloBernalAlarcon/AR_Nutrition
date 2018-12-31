@@ -15,10 +15,17 @@ public class FadingCurtain : MonoBehaviour {
     //private but serialized
     [SerializeField]
     LoadingScenesComponent LSC;
+    [SerializeField]
+    bool ThisIsTheLoadingScene;
 
+    private void Start()
+    {
+        if (ThisIsTheLoadingScene)
+            LSC.LoadSceneOnBackground(this);
+    }
 
-	// Use this for initialization
-	void Awake () {
+    // Use this for initialization
+    void Awake () {
         blackCourtain = GetComponent<Image>();
 	}
 
@@ -51,7 +58,13 @@ public class FadingCurtain : MonoBehaviour {
             yield return null;
         }
 
-        gameObject.SetActive(false);
+        if (!ThisIsTheLoadingScene)
+            gameObject.SetActive(false);
+        else
+        {
+            yield return new WaitForSeconds(1);
+            FadeIn();
+        }
     }
 
      void FadeIn()
@@ -62,7 +75,8 @@ public class FadingCurtain : MonoBehaviour {
     IEnumerator FadeI()
     {
         //load scene asyncronously, triger load when the sreen is black
-        LSC.LoadSceneOnBackground(this);
+        if(!ThisIsTheLoadingScene)
+         LSC.LoadSceneOnBackground(this);
 
         Color tempColor = blackCourtain.color;
         for (float i = 0f; i <= 1f; i += Time.deltaTime/3)

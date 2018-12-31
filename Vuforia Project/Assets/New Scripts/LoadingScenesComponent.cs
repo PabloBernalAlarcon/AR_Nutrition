@@ -7,7 +7,9 @@ public class LoadingScenesComponent : MonoBehaviour {
     [SerializeField]
     string SceneToLoad;
 
-	public void LoadScene(string _Name)
+    bool AlreadyLoading;
+
+    public void LoadScene(string _Name)
     {
         SceneManager.LoadScene(_Name);
     }
@@ -18,6 +20,9 @@ public class LoadingScenesComponent : MonoBehaviour {
     }
     IEnumerator LoadAsy( FadingCurtain TriggerLoad)
     {
+        if (AlreadyLoading)
+            yield break;
+        AlreadyLoading = true;
         //Begin to load the Scene you specify
         AsyncOperation asyncOperation;
         if (SceneToLoad != "")
@@ -29,14 +34,16 @@ public class LoadingScenesComponent : MonoBehaviour {
        
         while (!asyncOperation.isDone)
         {
-            
+            print(asyncOperation.progress);
 
             // Check if the load has finished
             if (asyncOperation.progress >= 0.9f)
             {
-
+             
                 yield return new WaitUntil(() => TriggerLoad.CurtainIsBlack);
                 asyncOperation.allowSceneActivation = true;
+               
+               
             }
 
             yield return null;

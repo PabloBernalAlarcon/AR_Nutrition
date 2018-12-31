@@ -8,6 +8,8 @@ public class PivotMainMenu : MonoBehaviour {
     bool RandomNumber;
     [SerializeField]
     float RotationSpeed;
+    [SerializeField]
+    Vector3 RotationVector;
 
     private void Start()
     {
@@ -16,6 +18,10 @@ public class PivotMainMenu : MonoBehaviour {
     }
     // Update is called once per frame
     void Update () {
-        transform.Rotate(0, 0, Time.deltaTime*RotationSpeed);
+        if (RotationVector == Vector3.zero)
+            transform.Rotate(0, 0, Time.deltaTime * RotationSpeed);
+        else
+            transform.Rotate(RotationVector*Time.deltaTime);
+
 	}
 }

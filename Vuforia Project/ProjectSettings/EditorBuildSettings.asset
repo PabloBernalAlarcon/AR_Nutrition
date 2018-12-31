@@ -8,18 +8,21 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/New Scenes/Main Menu.unity
     guid: f4209a1bd186db54e83238f9a6358438
+  - enabled: 1
+    path: Assets/New Scenes/Loading.unity
+    guid: fe862b13d6655cd428aa297e4871c5d1
+  - enabled: 1
+    path: Assets/Scenes/old RocketScene.unity
+    guid: 8b4f2818bfa3b8b40811c5fd8b55cf1d
   - enabled: 0
     path: Assets/Scenes/old Main Menu.unity
     guid: 750772b1e57fc884b91dc46c10c50376
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/old Loading.unity
     guid: 5d47890a0b14d77458d2f7eac6433cff
   - enabled: 0
     path: Assets/Scenes/CubeAR.unity
     guid: 2c030754dd22ba949bb5b4e55aabb219
-  - enabled: 1
-    path: Assets/Scenes/old RocketScene.unity
-    guid: 8b4f2818bfa3b8b40811c5fd8b55cf1d
   - enabled: 0
     path: Assets/Scenes/BootlegRocketScene.unity
     guid: 0d85144f10d02c84aa6c6ce4f82e3d67
