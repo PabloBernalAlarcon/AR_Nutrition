@@ -26,7 +26,7 @@ public class LoadingScript : MonoBehaviour {
 
     IEnumerator Load()
     {
-        async = SceneManager.LoadSceneAsync("RocketScene");
+        async = SceneManager.LoadSceneAsync("old RocketScene");
         async.allowSceneActivation = false;
 
         while (!async.isDone)
