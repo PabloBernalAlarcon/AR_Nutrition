@@ -22,12 +22,13 @@ public  class GameOverseer :MonoBehaviour {
         {
             Destroy(this.gameObject);
         }
+        DontDestroyOnLoad(this);
     }
 
     public void Found()
     {
         //base.OnTrackingFound();
-        print("OOOOOf");
+        print("fond ye");
 
         if(ARTargetFoundStatus!= null)
             ARTargetFoundStatus(true);

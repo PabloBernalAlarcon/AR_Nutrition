@@ -12,8 +12,8 @@ public class TrackingStuff : MonoBehaviour, ITrackableEventHandler{
     #region PRIVATE_MEMBERS
     [SerializeField]
      CameraFocusController cameraFocus;
-    [SerializeField]
-    GameOverseer gameOverseer;
+   // [SerializeField]
+    //GameOverseer gameOverseer;
     #endregion
     #region PROTECTED_MEMBER_VARIABLES
 
@@ -84,8 +84,8 @@ public class TrackingStuff : MonoBehaviour, ITrackableEventHandler{
     protected virtual void OnTrackingFound()
     {
 
-        gameOverseer.Found();
-
+        //gameOverseer.Found();
+        GameOverseer.instance.Found();
         var rendererComponents = GetComponentsInChildren<Renderer>(true);
         var colliderComponents = GetComponentsInChildren<Collider>(true);
         var canvasComponents = GetComponentsInChildren<Canvas>(true);
@@ -108,8 +108,8 @@ public class TrackingStuff : MonoBehaviour, ITrackableEventHandler{
 
     protected virtual void OnTrackingLost()
     {
-        gameOverseer.Lost();
-
+        //gameOverseer.Lost();
+        GameOverseer.instance.Lost();
         var rendererComponents = GetComponentsInChildren<Renderer>(true);
         var colliderComponents = GetComponentsInChildren<Collider>(true);
         var canvasComponents = GetComponentsInChildren<Canvas>(true);
