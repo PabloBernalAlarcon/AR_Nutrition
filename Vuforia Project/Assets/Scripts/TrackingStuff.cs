@@ -5,8 +5,15 @@ using Vuforia;
 public class TrackingStuff : MonoBehaviour, ITrackableEventHandler{
 
     #region PUBLIC_MEMBERS
-    public CameraFocusController cameraFocus;
+   
 
+    #endregion
+
+    #region PRIVATE_MEMBERS
+    [SerializeField]
+     CameraFocusController cameraFocus;
+    [SerializeField]
+    GameOverseer gameOverseer;
     #endregion
     #region PROTECTED_MEMBER_VARIABLES
 
@@ -76,6 +83,9 @@ public class TrackingStuff : MonoBehaviour, ITrackableEventHandler{
 
     protected virtual void OnTrackingFound()
     {
+
+        gameOverseer.Found();
+
         var rendererComponents = GetComponentsInChildren<Renderer>(true);
         var colliderComponents = GetComponentsInChildren<Collider>(true);
         var canvasComponents = GetComponentsInChildren<Canvas>(true);
@@ -91,11 +101,15 @@ public class TrackingStuff : MonoBehaviour, ITrackableEventHandler{
         // Enable canvas':
         foreach (var component in canvasComponents)
             component.enabled = true;
+
+        
     }
 
 
     protected virtual void OnTrackingLost()
     {
+        gameOverseer.Lost();
+
         var rendererComponents = GetComponentsInChildren<Renderer>(true);
         var colliderComponents = GetComponentsInChildren<Collider>(true);
         var canvasComponents = GetComponentsInChildren<Canvas>(true);

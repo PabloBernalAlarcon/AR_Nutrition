@@ -42,6 +42,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CurtainIsBlack: 0
   LSC: {fileID: 0}
+  ThisIsTheLoadingScene: 1
 --- !u!114 &114300529730555842
 MonoBehaviour:
   m_ObjectHideFlags: 1

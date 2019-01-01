@@ -375,7 +375,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44c941caec915ff4f861b76bfd70467f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SceneToLoad: old RocketScene
+  SceneToLoad: Game
 --- !u!1 &1321372273
 GameObject:
   m_ObjectHideFlags: 0
@@ -558,15 +558,6 @@ Prefab:
       propertyPath: LSC
       value: 
       objectReference: {fileID: 1241965101}
-    - target: {fileID: 114042591711124230, guid: eaf6742707fbd2346adc9afc038a356b,
-        type: 2}
-      propertyPath: ThisIsTheLoadingScene
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1716555059499628, guid: eaf6742707fbd2346adc9afc038a356b, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eaf6742707fbd2346adc9afc038a356b, type: 2}
   m_IsPrefabAsset: 0

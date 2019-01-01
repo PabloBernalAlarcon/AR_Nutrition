@@ -1088,6 +1088,11 @@ Prefab:
       propertyPath: LSC
       value: 
       objectReference: {fileID: 1031640739}
+    - target: {fileID: 114042591711124230, guid: eaf6742707fbd2346adc9afc038a356b,
+        type: 2}
+      propertyPath: ThisIsTheLoadingScene
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eaf6742707fbd2346adc9afc038a356b, type: 2}
   m_IsPrefabAsset: 0

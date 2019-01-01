@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/New Scenes/Loading.unity
     guid: fe862b13d6655cd428aa297e4871c5d1
   - enabled: 1
+    path: Assets/New Scenes/Game.unity
+    guid: d5a4af8ca2f50f64b882ae2d4e6254e4
+  - enabled: 0
     path: Assets/Scenes/old RocketScene.unity
     guid: 8b4f2818bfa3b8b40811c5fd8b55cf1d
   - enabled: 0
