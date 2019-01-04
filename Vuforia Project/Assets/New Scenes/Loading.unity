@@ -215,7 +215,7 @@ GameObject:
   - component: {fileID: 800232206}
   - component: {fileID: 800232205}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Game Overseer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
