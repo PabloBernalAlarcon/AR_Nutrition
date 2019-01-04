@@ -13,6 +13,13 @@ public  class GameOverseer :MonoBehaviour {
     //event related to when the image target was found or lost
     public  event AREvent ARTargetFoundStatus;
 
+    public enum Parts
+    {
+        Payload,
+        Centaur,
+        Thruster
+    }
+
     //*****PRIVATE MEMBERS*****
 
     //List of elements affected by tracking
