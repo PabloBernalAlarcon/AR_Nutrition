@@ -10,8 +10,11 @@ public class InformationPanel : MonoBehaviour {
     Text PartInfo;
     [SerializeField]
     Image PartImage;
-
+    [SerializeField]
+    PanelInfo[] Infoes;
+    
     Animator Anim;
+    GameOverseer.Parts part;
     private void Start()
     {
         Anim = GetComponent<Animator>();
@@ -24,11 +27,14 @@ public class InformationPanel : MonoBehaviour {
         PartName.text = _Pi.PartName;
         PartInfo.text = _Pi.PartDescription;
         PartImage.sprite = _Pi.PartImage;
+        part = _Pi.PartType;
         Anim.SetTrigger("Grow");
     }
 
     public void CloseTab()
     {
         Anim.SetTrigger("Shrink");
+        Infoes[(int)part].CompletedCheck();
+        
     }
 }

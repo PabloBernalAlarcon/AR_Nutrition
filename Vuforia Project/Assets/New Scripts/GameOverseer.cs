@@ -10,8 +10,12 @@ public  class GameOverseer :MonoBehaviour {
     public static GameOverseer instance;
     //delegate related to image targeting
     public delegate void AREvent(bool _trigger);
+    //delegate related to game objective events
+    public delegate void GameEvent();
     //event related to when the image target was found or lost
     public  event AREvent ARTargetFoundStatus;
+    //event fired when the player checks any rocekt item
+    public event GameEvent ItemsChecked;
 
     public enum Parts
     {
@@ -24,6 +28,26 @@ public  class GameOverseer :MonoBehaviour {
 
     //List of elements affected by tracking
     private List<GameObject> UIElements;
+
+    //numer of items that the player has to check
+    int MaxObjectives = 3;
+
+    //number of items the player has checked
+    int CO =0;
+    public int CurrentObjectves
+    {
+        get
+        {
+            return CO;
+        }
+
+        set
+        {
+            CO = value;
+            if (CO >= MaxObjectives && ItemsChecked != null)
+                ItemsChecked();
+        }
+    }
 
     //*****METHODS*****
 

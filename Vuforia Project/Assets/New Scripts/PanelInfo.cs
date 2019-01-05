@@ -28,4 +28,14 @@ public class PanelInfo : MonoBehaviour {
         PartDescription = _PartDescription;
         PartType = _PartType;
     }
+
+    bool completed;
+    public void CompletedCheck()
+    {
+        if (completed)
+            return;
+
+        completed = true;
+        GameOverseer.instance.CurrentObjectves++;
+    }
 }
