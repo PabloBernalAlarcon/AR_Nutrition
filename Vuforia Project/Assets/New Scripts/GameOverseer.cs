@@ -72,13 +72,14 @@ public  class GameOverseer :MonoBehaviour {
     private void ChangeUIElementsStatus(bool _Active)
     {
         foreach (GameObject item in UIElements)
-            item.SetActive(_Active);       
+            if(item != null)
+             item.SetActive(_Active);       
     }
 
     //found Image Target
     public void Found()
     {
-        Time.timeScale = 1;
+        //Time.timeScale = 1;
 
         print("fond ye");
 
@@ -91,7 +92,7 @@ public  class GameOverseer :MonoBehaviour {
     //Lost Image Target
     public void Lost()
     {
-        Time.timeScale = 0;
+       // Time.timeScale = 0;
 
         print("You lost me babe");
 
@@ -114,4 +115,11 @@ public  class GameOverseer :MonoBehaviour {
         UIElements.Add(UIitem);
     }
 
+    private void OnDestroy()
+    {
+        Time.timeScale = 1;
+    }
+
 }
+
+

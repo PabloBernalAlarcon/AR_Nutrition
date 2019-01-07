@@ -1093,6 +1093,10 @@ Prefab:
       propertyPath: ThisIsTheLoadingScene
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1716555059499628, guid: eaf6742707fbd2346adc9afc038a356b, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eaf6742707fbd2346adc9afc038a356b, type: 2}
   m_IsPrefabAsset: 0

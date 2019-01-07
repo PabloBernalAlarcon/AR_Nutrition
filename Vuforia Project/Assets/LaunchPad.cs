@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class LaunchPad : MonoBehaviour {
 
+  
+    [SerializeField]
+    UberRocket Rocke;
+
     Animator anim;
 	// Use this for initialization
 	void Start () {
@@ -28,5 +32,10 @@ public class LaunchPad : MonoBehaviour {
     public void Hide()
     {
         anim.SetTrigger("Pressed");
+    }
+
+    public void Launch()
+    {
+        Rocke.StartLaunchSequence();
     }
 }

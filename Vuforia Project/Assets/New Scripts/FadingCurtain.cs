@@ -20,6 +20,7 @@ public class FadingCurtain : MonoBehaviour {
 
     private void Start()
     {
+        Time.timeScale = 1;
         if (ThisIsTheLoadingScene)
             LSC.LoadSceneOnBackground(this);
     }
@@ -51,7 +52,7 @@ public class FadingCurtain : MonoBehaviour {
     IEnumerator FadeO()
     {
         Color tempColor = blackCourtain.color;
-        for (float i = 1f; i >= 0f; i -= Time.deltaTime/3)
+        for (float i = 1f; i >= 0f; i -= Time.unscaledDeltaTime/3)
         {
             tempColor.a = i;
             blackCourtain.color = tempColor;
@@ -79,7 +80,7 @@ public class FadingCurtain : MonoBehaviour {
          LSC.LoadSceneOnBackground(this);
 
         Color tempColor = blackCourtain.color;
-        for (float i = 0f; i <= 1f; i += Time.deltaTime/3)
+        for (float i = 0f; i <= 1f; i += Time.unscaledDeltaTime/3)
         {
             tempColor.a = i;
             blackCourtain.color = tempColor;

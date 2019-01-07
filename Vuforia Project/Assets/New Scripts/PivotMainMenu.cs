@@ -15,6 +15,9 @@ public class PivotMainMenu : MonoBehaviour {
     {
         if (RandomNumber)
             RotationSpeed = Random.Range(-5f,5f);
+
+        if (GameOverseer.instance)
+            GameOverseer.instance.ResetList();
     }
     // Update is called once per frame
     void Update () {

@@ -20,6 +20,8 @@ public class LoadingScenesComponent : MonoBehaviour {
     }
     IEnumerator LoadAsy( FadingCurtain TriggerLoad)
     {
+
+        TriggerLoad.gameObject.SetActive(true);
         if (AlreadyLoading)
             yield break;
         AlreadyLoading = true;

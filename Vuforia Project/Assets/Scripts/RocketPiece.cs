@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class RocketPiece : MonoBehaviour {
 
+    [HideInInspector]
     public ParticleSystem PS;
     bool detahed;
     AudioSource AS;
