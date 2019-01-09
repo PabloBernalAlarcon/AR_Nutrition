@@ -26,7 +26,10 @@ public class LaunchPad : MonoBehaviour {
 
     void Emerge()
     {
-        anim.SetBool("Emerge", true);
+            if(anim != null)
+             anim.SetBool("Emerge", true);
+        else
+        print("NO ANIMATOR FOR SOME STUPID REASON");
     }
 
     public void Hide()

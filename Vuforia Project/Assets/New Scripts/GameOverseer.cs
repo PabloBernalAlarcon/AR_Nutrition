@@ -107,6 +107,7 @@ public  class GameOverseer :MonoBehaviour {
     public void ResetList()
     {
         UIElements.Clear();
+        CO = 0;
     }
 
     //Adds a element to the list. to be called from other scripts on awake awake.

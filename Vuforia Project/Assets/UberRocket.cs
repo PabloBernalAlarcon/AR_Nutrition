@@ -29,6 +29,8 @@ public class UberRocket : MonoBehaviour {
         AS = GetComponent<AudioSource>();
         BottomPartucleSystem.Stop();
 
+        
+
     }
 
     public void StartLaunchSequence()

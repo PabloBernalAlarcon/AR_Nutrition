@@ -55,6 +55,9 @@ public class CPC_Point
 public class CPC_CameraPath : MonoBehaviour
 {
 
+    //[HideInInspector]
+    public float ProgressPercentage = 0;
+
     public bool useMainCamera = true;
     public Transform selectedCamera;
     public bool lookAtTarget = false;
@@ -110,6 +113,7 @@ public class CPC_CameraPath : MonoBehaviour
     /// <param name="time">The time in seconds how long the camera takes for the entire path</param>
     public void PlayPath(float time)
     {
+        ProgressPercentage = 0;
         if (time <= 0) time = 0.001f;
         paused = false;
         playing = true;
@@ -233,7 +237,7 @@ public class CPC_CameraPath : MonoBehaviour
                 if (!paused && selectedCamera != null)
                 {
                     currentTimeInWaypoint += Time.deltaTime / timePerSegment;
-                   
+                    ProgressPercentage += Time.deltaTime / (time * 0.95f);
                     selectedCamera.transform.position = GetBezierPosition(currentWaypointIndex, currentTimeInWaypoint);
                     if (!lookAtTarget)
                         selectedCamera.transform.rotation = GetLerpRotation(currentWaypointIndex, currentTimeInWaypoint);

@@ -51,6 +51,9 @@ public class FadeEffect : MonoBehaviour {
             yield return null;
         }
 
+        if(GetComponent<AudioSource>())
+            GetComponent<AudioSource>().Play();
+
       //  SceneManager.LoadScene(x);
     }
 }
