@@ -8,17 +8,36 @@ public class UberRocket : MonoBehaviour {
 
     ParticleSystem BottomPartucleSystem;
     AudioSource AS;
-    bool fl;
+    bool hasBegunFlying;
 
 
     public delegate void ChangeColor();
     public static event ChangeColor fadeOut;
+
+    public delegate void Deployment(bool _allow);
+    public static event Deployment Allowdeployment;
 
     SystemsDetached SD;
     public Countdown CountText;
     public CPC_CameraPath CameraPath;
 
 
+    bool canBeDetached;
+
+
+    private void OnEnable()
+    {
+        CameraTouchInput.ClickedItem += DeployRocket;
+        GameOverseer.instance.ARTargetFoundStatus += handlePause;
+        
+    }
+
+    private void OnDisable()
+    {
+        CameraTouchInput.ClickedItem -= DeployRocket;
+        GameOverseer.instance.ARTargetFoundStatus -= handlePause;
+      
+    }
     // Use this for initialization
     void Start()
     {
@@ -33,6 +52,16 @@ public class UberRocket : MonoBehaviour {
 
     }
 
+    void handlePause(bool _resume)
+    {
+        if (!hasBegunFlying)
+            return;
+        
+        if ( _resume)
+            CameraPath.ResumePath();
+        else if(!_resume)
+            CameraPath.PausePath();
+    }
     public void StartLaunchSequence()
     {           
             StartCoroutine(LaunchSequence());      
@@ -52,15 +81,36 @@ public class UberRocket : MonoBehaviour {
         if (fadeOut != null)
             fadeOut();
         CameraPath.PlayPath(40);
+        hasBegunFlying = true;
 
         for (int i = 0; i < 1; i++)
         {
-            yield return new WaitForSeconds(17);
-            CountText.StartCounting();
-            yield return new WaitForSeconds(3);
-            //detach piece
-            SD.Detach();
+            yield return new WaitForSeconds(19);
+            if (Allowdeployment != null)
+                Allowdeployment(true);
+            canBeDetached = true;
+            yield return new WaitForSeconds(10);
+            if(!hasdeployed)
+                 DeployRocket();
 
         }
     }
+
+    bool hasdeployed;
+    void DeployRocket()
+    {
+        if (!canBeDetached)
+            return;
+
+        hasdeployed = true;
+        if (Allowdeployment != null)
+            Allowdeployment(false);
+        canBeDetached = false;
+        hasdeployed = true;
+        CountText.StartCounting();
+        SD.Detach();
+    }
+
+
+   
 }

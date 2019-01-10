@@ -1,20 +1,27 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class CameraTouchInput : MonoBehaviour {
 
-	
-	
+    [SerializeField]
+    Text t;
+
+    public delegate void Click();
+    public static event Click ClickedItem;
+
 	// Update is called once per frame
 	void Update () {
-        if (Input.touchCount > 0)
+        if (Input.GetMouseButtonDown(0))
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
+            
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
             if (Physics.Raycast(ray,out hit))
             {
-                print(hit.transform.gameObject.name);
+                if (hit.transform.name == "Atlas_5_Mesh")
+                    if (ClickedItem != null)
+                        ClickedItem();
             }
         }
 	}
