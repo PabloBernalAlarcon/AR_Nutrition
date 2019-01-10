@@ -9,8 +9,22 @@ public class RocketPiece : MonoBehaviour {
     bool detahed;
     AudioSource AS;
     Vector3 rotat;
-	// Use this for initialization
-	void Awake () {
+    private void OnEnable()
+    {
+        GameOverseer.instance.ARTargetFoundStatus += HandlePause;
+    }
+    private void OnDisable()
+    {
+        GameOverseer.instance.ARTargetFoundStatus -= HandlePause;
+    }
+
+    bool pause;
+    void HandlePause(bool _resume)
+    {
+        pause = !_resume;
+    }
+    // Use this for initialization
+    void Awake () {
         PS = GetComponent<ParticleSystem>();
         AS = GetComponent<AudioSource>();
         rotat = new Vector3();
@@ -38,11 +52,13 @@ public class RocketPiece : MonoBehaviour {
         par.loop = false;
        // PS.Stop();
         yield return new WaitForSeconds(3);
+        yield return new WaitUntil(() => !pause);
         AS.Play();
         Handheld.Vibrate();
         transform.parent = null;
         detahed = true;
         yield return new WaitForSeconds(1);
+        yield return new WaitUntil(() => !pause);
         _ps.Play();
     }
 	// Update is called once per frame

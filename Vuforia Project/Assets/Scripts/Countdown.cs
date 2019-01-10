@@ -7,8 +7,17 @@ public class Countdown : MonoBehaviour {
     Text t;
     Animator anim;
     AudioSource AS;
-	// Use this for initialization
-	void Start () {
+
+    private void OnEnable()
+    {
+        GameOverseer.instance.ARTargetFoundStatus += HandlePause;
+    }
+    private void OnDisable()
+    {
+        GameOverseer.instance.ARTargetFoundStatus -= HandlePause;
+    }
+    // Use this for initialization
+    void Start () {
         t = GetComponent<Text>();
         anim = GetComponent<Animator>();
         AS = GetComponent<AudioSource>();
@@ -25,10 +34,19 @@ public class Countdown : MonoBehaviour {
     {
         StartCoroutine(StartCountdown( number));
     }
+
+    bool paused;
+
+    void HandlePause(bool _paused)
+    {
+        paused = _paused;
+    }
     IEnumerator StartCountdown(int number = 3)
     {
         for (int i = 0; i < number; i++)
         {
+            yield return new WaitUntil(() => paused);
+
             if (number -i <= 3)
                 t.color = Color.red;
             AS.Play();

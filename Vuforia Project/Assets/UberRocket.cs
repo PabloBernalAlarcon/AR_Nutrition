@@ -23,7 +23,7 @@ public class UberRocket : MonoBehaviour {
 
 
     bool canBeDetached;
-
+    bool launchSequenceHasBegun;
 
     private void OnEnable()
     {
@@ -54,6 +54,18 @@ public class UberRocket : MonoBehaviour {
 
     void handlePause(bool _resume)
     {
+        if (!launchSequenceHasBegun)
+            return;
+
+        if (launchSequenceHasBegun)
+        {
+            if (_resume)
+                AS.UnPause();
+            else
+                AS.Pause();
+        }
+
+
         if (!hasBegunFlying)
             return;
         
@@ -69,14 +81,17 @@ public class UberRocket : MonoBehaviour {
 
     IEnumerator LaunchSequence()
     {
+        launchSequenceHasBegun = true;
+
         AS.Play();
-        yield return new WaitForSeconds(1);
+
+        yield return new WaitUntil(() => getAudioPercentage() >= 1);
         //start countdown
         CountText.StartCounting(10);
-        yield return new WaitForSeconds(4);
+        yield return new WaitUntil(() => getAudioPercentage() >= 5);
         //start engines
         BottomPartucleSystem.Play();
-        yield return new WaitForSeconds(8);
+        yield return new WaitUntil(() => getAudioPercentage() >= 15);
         //fly away
         if (fadeOut != null)
             fadeOut();
@@ -85,12 +100,14 @@ public class UberRocket : MonoBehaviour {
 
         for (int i = 0; i < 1; i++)
         {
-            yield return new WaitForSeconds(19);
+            //yield return new WaitForSeconds(19);
+            yield return new WaitUntil(() => getAudioPercentage() >= 37);
             if (Allowdeployment != null)
                 Allowdeployment(true);
             canBeDetached = true;
-            yield return new WaitForSeconds(10);
-            if(!hasdeployed)
+            // yield return new WaitForSeconds(10);
+            yield return new WaitUntil(() => getAudioPercentage() >= 50);
+            if (!hasdeployed)
                  DeployRocket();
 
         }
@@ -111,6 +128,10 @@ public class UberRocket : MonoBehaviour {
         SD.Detach();
     }
 
-
+    //returns the percentage of the progress of the audio playing, used on the coroutine to trigger some rocket events, mostly on pause
+    int getAudioPercentage()
+    {
+        return (int)((AS.time / AS.clip.length) * 100);
+    }
    
 }

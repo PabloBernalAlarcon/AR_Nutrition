@@ -14,10 +14,8 @@ public class SystemsDetached : MonoBehaviour {
         }
 
         
-	}
+	}	
 	
-	
-
     public void Detach()
     {
         //transform.position += new Vector3(0, Time.deltaTime);
