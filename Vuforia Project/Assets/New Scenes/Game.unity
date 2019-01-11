@@ -2428,6 +2428,7 @@ GameObject:
   - component: {fileID: 634181348}
   - component: {fileID: 634181347}
   - component: {fileID: 634181346}
+  - component: {fileID: 634181350}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -2519,6 +2520,17 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!225 &634181350
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 634181345}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &639703673
 GameObject:
   m_ObjectHideFlags: 0
@@ -16424,7 +16436,7 @@ MonoBehaviour:
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1916513547}
   m_OnClick:
     m_PersistentCalls:
