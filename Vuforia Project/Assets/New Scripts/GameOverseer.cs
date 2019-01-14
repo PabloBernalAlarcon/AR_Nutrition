@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public  class GameOverseer :MonoBehaviour {
 
@@ -72,8 +73,20 @@ public  class GameOverseer :MonoBehaviour {
     private void ChangeUIElementsStatus(bool _Active)
     {
         foreach (GameObject item in UIElements)
-            if(item != null)
-             item.SetActive(_Active);       
+        {
+            if ( item != null)
+            {
+                if (item.GetComponent<Image>())
+                    item.GetComponent<Image>().enabled = _Active;
+                else if (item.GetComponent<Text>())
+                    item.GetComponent<Text>().enabled = _Active;
+                else
+                    item.SetActive(_Active);
+
+            }
+        }
+            
+                 
     }
 
     //found Image Target

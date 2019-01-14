@@ -54,7 +54,7 @@ public class Countdown : MonoBehaviour {
         anim.Play("count");
             yield return new WaitForSeconds(1);
         }
-        t.color = Color.black;
+        t.color = Color.green;
         yield return null;
     }
 }

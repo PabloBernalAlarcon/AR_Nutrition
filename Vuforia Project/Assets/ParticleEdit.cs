@@ -28,7 +28,7 @@ public class ParticleEdit : MonoBehaviour {
     {
         var shkere = PS.shape;
 
-        for (float i = 90; i >= 0; i-= (Time.deltaTime *10))
+        for (float i = 90; i >= 10; i-= (Time.deltaTime *9))
         {
             shkere.angle = i;
         yield return null;
