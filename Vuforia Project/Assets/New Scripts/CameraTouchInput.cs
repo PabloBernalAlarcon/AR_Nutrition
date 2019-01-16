@@ -10,8 +10,24 @@ public class CameraTouchInput : MonoBehaviour {
     public delegate void Click();
     public static event Click ClickedItem;
 
-	// Update is called once per frame
-	void Update () {
+
+    AudioSource AS;
+    private void OnEnable()
+    {
+        GameOverseer.instance.ARTargetFoundStatus += HandlePause;
+    }
+    private void OnDisable()
+    {
+        GameOverseer.instance.ARTargetFoundStatus -= HandlePause;
+    }
+
+    private void Start()
+    {
+        AS = GetComponent<AudioSource>();
+        AS.Pause();
+    }
+    // Update is called once per frame
+    void Update () {
         if (Input.GetMouseButtonDown(0))
         {
             
@@ -25,4 +41,12 @@ public class CameraTouchInput : MonoBehaviour {
             }
         }
 	}
+
+    void HandlePause(bool _paused)
+    {
+        if (!_paused)
+            AS.Pause();
+        else
+            AS.UnPause();
+    }
 }
