@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class UberRocket : MonoBehaviour {
 
  
@@ -20,7 +20,7 @@ public class UberRocket : MonoBehaviour {
     SystemsDetached SD;
     public Countdown CountText;
     public CPC_CameraPath CameraPath;
-
+    public Slider RocketSliderProgress;
 
     bool canBeDetached;
     bool launchSequenceHasBegun;
@@ -88,7 +88,7 @@ public class UberRocket : MonoBehaviour {
         yield return new WaitUntil(() => getAudioPercentage() >= 1);
         //start countdown
         CountText.StartCounting(10);
-        yield return new WaitUntil(() => getAudioPercentage() >= 5);
+        yield return new WaitUntil(() => getAudioPercentage() >= 7);
         //start engines
         BottomPartucleSystem.Play();
         yield return new WaitUntil(() => getAudioPercentage() >= 15);
@@ -101,12 +101,12 @@ public class UberRocket : MonoBehaviour {
         for (int i = 0; i < 1; i++)
         {
             //yield return new WaitForSeconds(19);
-            yield return new WaitUntil(() => getAudioPercentage() >= 37);
+            yield return new WaitUntil(() => RocketSliderProgress.value >= 0.5f);
             if (Allowdeployment != null)
                 Allowdeployment(true);
             canBeDetached = true;
             // yield return new WaitForSeconds(10);
-            yield return new WaitUntil(() => getAudioPercentage() >= 50);
+            yield return new WaitUntil(() => RocketSliderProgress.value >= 0.8f);
             if (!hasdeployed)
                  DeployRocket();
 

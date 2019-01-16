@@ -5,6 +5,8 @@ using UnityEngine;
 public class SystemsDetached : MonoBehaviour {
 
     Stack<RocketPiece> RocketPieces = new Stack<RocketPiece>();
+    [SerializeField]
+    AudioSource RocketSliderHandleAudio;
 	// Use this for initialization
 	void Start () {
 
@@ -18,6 +20,7 @@ public class SystemsDetached : MonoBehaviour {
 	
     public void Detach()
     {
+        RocketSliderHandleAudio.Play();
         //transform.position += new Vector3(0, Time.deltaTime);
         if ( RocketPieces.Count > 1)
         {
