@@ -95,9 +95,10 @@ public class UberRocket : MonoBehaviour {
         //fly away
         if (fadeOut != null)
             fadeOut();
-        CameraPath.PlayPath(40);
+        CameraPath.PlayPath(50);
         hasBegunFlying = true;
 
+        
         for (int i = 0; i < 1; i++)
         {
             //yield return new WaitForSeconds(19);
