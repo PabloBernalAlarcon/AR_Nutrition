@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 [System.Serializable]
 public class CPC_Visual
 {
@@ -50,6 +51,21 @@ public class CPC_Point
         positionCurve = AnimationCurve.Linear(0,0,1,1);
         chained = true;
     }
+
+    //mi pendejada
+    public CPC_Point(Transform trans)
+    {
+        position = trans.position;
+        rotation = trans.rotation;
+        handleprev = Vector3.back;
+        handlenext = Vector3.forward;
+        curveTypeRotation = CPC_ECurveType.EaseInAndOut;
+        rotationCurve = AnimationCurve.EaseInOut(0, 0, 1, 1);
+        curveTypePosition = CPC_ECurveType.Linear;
+        positionCurve = AnimationCurve.Linear(0, 0, 1, 1);
+        chained = true;
+    }
+    //mi pendejada
 }
 
 public class CPC_CameraPath : MonoBehaviour
@@ -69,6 +85,12 @@ public class CPC_CameraPath : MonoBehaviour
     public bool looped = false;
     public bool alwaysShow = true;
     public CPC_EAfterLoop afterLoop = CPC_EAfterLoop.Continue;
+
+    //mis pendejadas
+    public bool TargetATarget = false;
+    public Transform DynamicTarget;
+    public List<Transform> NodePositions;
+    //fin de mis pendejadas
 
     private int currentWaypointIndex;
     private float currentTimeInWaypoint;
@@ -231,9 +253,14 @@ public class CPC_CameraPath : MonoBehaviour
         currentWaypointIndex = 0;
         while (currentWaypointIndex < points.Count)
         {
+            
             currentTimeInWaypoint = 0;
             while (currentTimeInWaypoint < 1)
             {
+                //mi pendejada
+                points[1].position = DynamicTarget.position;
+                //fin de mi pendejada
+
                 if (!paused && selectedCamera != null)
                 {
                     currentTimeInWaypoint += Time.deltaTime / timePerSegment;
@@ -321,4 +348,11 @@ public class CPC_CameraPath : MonoBehaviour
     }
 #endif
 
+    //mi pendejada tambien
+    public void EditAnimHandles(UnityEngine.UI.Slider s)
+    {
+        points[1].handleprev.x = -100 * s.value;
+        points[1].handlenext.x = 100 * s.value;
+    }
+    //fin de me pendejada
 }

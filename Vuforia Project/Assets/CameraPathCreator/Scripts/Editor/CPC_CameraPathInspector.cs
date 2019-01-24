@@ -14,7 +14,8 @@ public enum CPC_ENewWaypointMode
     SceneCamera,
     LastWaypoint,
     WaypointIndex,
-    WorldCenter
+    WorldCenter,
+    ObjectPosition
 }
 
 [CustomEditor(typeof(CPC_CameraPath))]
@@ -66,6 +67,11 @@ public class CPC_CameraPathInspector : Editor
     private SerializedProperty loopedProperty;
     private SerializedProperty alwaysShowProperty;
     private SerializedProperty afterLoopProperty;
+
+    //mis pendejadas
+    private SerializedProperty DynamicProperty;
+    private SerializedProperty TransformDynamicTarget;
+    //fin de mis pendejadas
 
     private int selectedIndex = -1;
 
@@ -169,6 +175,11 @@ public class CPC_CameraPathInspector : Editor
         afterLoopProperty = serializedObjectTarget.FindProperty("afterLoop");
         playOnAwakeProperty = serializedObjectTarget.FindProperty("playOnAwake");
         playOnAwakeTimeProperty = serializedObjectTarget.FindProperty("playOnAwakeTime");
+
+        //mis pendejadas
+        DynamicProperty = serializedObjectTarget.FindProperty("TargetATarget");
+        TransformDynamicTarget = serializedObjectTarget.FindProperty("DynamicTarget");
+        //mis pedejadas
     }
 
     void SetupReorderableList()
@@ -377,6 +388,15 @@ public class CPC_CameraPathInspector : Editor
         lookAtTargetTransformProperty.objectReferenceValue = (Transform)EditorGUILayout.ObjectField(lookAtTargetTransformProperty.objectReferenceValue, typeof(Transform), true);
         GUI.enabled = true;
         GUILayout.EndHorizontal();
+       
+        //mis pendejadas
+        GUILayout.BeginHorizontal();
+        DynamicProperty.boolValue = GUILayout.Toggle(DynamicProperty.boolValue, "Target a target", GUILayout.Width(Screen.width / 3f));
+        GUI.enabled = DynamicProperty.boolValue;
+        TransformDynamicTarget.objectReferenceValue = (Transform)EditorGUILayout.ObjectField(TransformDynamicTarget.objectReferenceValue, typeof(Transform), true);        
+        GUI.enabled = true;
+        GUILayout.EndHorizontal();
+        //fin de mis pendejadas
 
         GUILayout.BeginHorizontal();
         loopedProperty.boolValue = GUILayout.Toggle(loopedProperty.boolValue, "Looped", GUILayout.Width(Screen.width/3f));
@@ -517,6 +537,11 @@ public class CPC_CameraPathInspector : Editor
                 case CPC_ENewWaypointMode.WorldCenter:
                     t.points.Add(new CPC_Point(Vector3.zero, Quaternion.identity));
                     break;
+                //mis pendejajas
+                case CPC_ENewWaypointMode.ObjectPosition:
+                    t.points.Add(new CPC_Point((Transform)TransformDynamicTarget.objectReferenceValue));
+                    break;
+                //fin de mis pendejadas
                 default:
                     throw new ArgumentOutOfRangeException();
             }
