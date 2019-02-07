@@ -5,7 +5,10 @@ using UnityEngine;
 public class ScreenshotTaker : MonoBehaviour
 {
     public bool takingScreenshot = false;
-
+    [SerializeField]
+    GameObject RegularCanvas;
+    [SerializeField]
+    GameObject RocketCanvas;
     public void CaptureScreenshot()
     {
         StartCoroutine(TakeScreenshotAndSave());
@@ -13,7 +16,14 @@ public class ScreenshotTaker : MonoBehaviour
 
     private IEnumerator TakeScreenshotAndSave()
     {
+        bool dontdoit = false;
+
         takingScreenshot = true;
+        RegularCanvas.SetActive(false);
+        if (RocketCanvas)
+            RocketCanvas.SetActive(false);
+        else
+            dontdoit = true;
         yield return new WaitForEndOfFrame();
 
         Texture2D ss = new Texture2D(Screen.width, Screen.height, TextureFormat.RGB24, false);
@@ -24,5 +34,8 @@ public class ScreenshotTaker : MonoBehaviour
         string name = string.Format("{0}_Capture{1}_{2}.png", Application.productName, "{0}", System.DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss"));
         print("Permission result: " + NativeGallery.SaveImageToGallery(ss, Application.productName + " Captures", name));
         takingScreenshot = false;
+        RegularCanvas.SetActive(true);
+        if (!dontdoit)
+            RocketCanvas.SetActive(true);
     }
 }

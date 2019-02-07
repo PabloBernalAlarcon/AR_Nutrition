@@ -5,8 +5,8 @@ using Vuforia;
 public class TrackingStuff : MonoBehaviour, ITrackableEventHandler{
 
     #region PUBLIC_MEMBERS
-   
 
+    public bool TrackingAnObject;
     #endregion
 
     #region PRIVATE_MEMBERS
@@ -59,6 +59,7 @@ public class TrackingStuff : MonoBehaviour, ITrackableEventHandler{
         {
             Debug.Log("Trackable " + mTrackableBehaviour.TrackableName + " found");
             OnTrackingFound();
+            TrackingAnObject = true;
             cameraFocus.enabled = false;
         }
         else if (previousStatus == TrackableBehaviour.Status.TRACKED &&
@@ -66,6 +67,7 @@ public class TrackingStuff : MonoBehaviour, ITrackableEventHandler{
         {
             Debug.Log("Trackable " + mTrackableBehaviour.TrackableName + " lost");
             OnTrackingLost();
+            TrackingAnObject = false;
             cameraFocus.enabled = true;
         }
         else

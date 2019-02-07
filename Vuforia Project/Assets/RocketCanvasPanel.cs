@@ -5,6 +5,8 @@ using UnityEngine.UI;
 public class RocketCanvasPanel : MonoBehaviour {
 
     List<Button> Buttons;
+    [SerializeField]
+    Button TakePhoto;
 	// Use this for initialization
 	void Start () {
         Buttons = new List<Button>();
@@ -13,6 +15,7 @@ public class RocketCanvasPanel : MonoBehaviour {
         {
             Buttons.Add(transform.GetChild(i).GetComponent<Button>());
         }
+        Buttons.Add(TakePhoto);
 	}
 	
 	public void SetButtonsState(bool _active)
