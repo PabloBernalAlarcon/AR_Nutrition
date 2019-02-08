@@ -15,7 +15,7 @@ public class RocketCanvasPanel : MonoBehaviour {
         {
             Buttons.Add(transform.GetChild(i).GetComponent<Button>());
         }
-        Buttons.Add(TakePhoto);
+       // Buttons.Add(TakePhoto);
 	}
 	
 	public void SetButtonsState(bool _active)
@@ -24,5 +24,15 @@ public class RocketCanvasPanel : MonoBehaviour {
         {
             Buttons[i].interactable = _active;
         }
+        if (!_active)
+            TakePhoto.interactable = false;
+        else
+            StartCoroutine(PhotoEnable());
+    }
+
+    IEnumerator PhotoEnable()
+    {
+        yield return new WaitForSeconds(1.1f);
+        TakePhoto.interactable = true;
     }
 }
