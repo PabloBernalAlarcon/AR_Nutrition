@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QCARConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="qcar_config.xsd">
+  <Tracking>
+    <ImageTarget name="nasa_logo" size="30.000000 25.094999" />
+    <ImageTarget name="Construction_Zone" size="0.216000 0.288000" />
+    <ImageTarget name="Fish" size="0.060000 0.080000" />
+    <ImageTarget name="Cheese" size="0.060000 0.080000" />
+    <ImageTarget name="Bread" size="0.060000 0.080000" />
+    <ImageTarget name="Apple" size="0.060000 0.080000" />
+    <ImageTarget name="broccoli" size="0.060000 0.080000" />
+    <ImageTarget name="no_food_or_drinks" size="0.180000 0.251787" />
+    <ImageTarget name="Pablo_Card" size="0.090000 0.051288" />
+  </Tracking>
+</QCARConfig>
