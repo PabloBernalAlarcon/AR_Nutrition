@@ -5,6 +5,7 @@ Copyright (c) 2010-2014 Qualcomm Connected Experiences, Inc.
 All Rights Reserved.
 Confidential and Proprietary - Protected under copyright and other laws.
 ==============================================================================*/
+
 using UnityEngine;
 using Vuforia;
 
@@ -16,10 +17,6 @@ using Vuforia;
 /// </summary>
 public class DefaultTrackableEventHandler : MonoBehaviour, ITrackableEventHandler
 {
-
-    #region PUBLIC_MEMBER_VARIABLES
-    
-    #endregion
     #region PROTECTED_MEMBER_VARIABLES
 
     protected TrackableBehaviour mTrackableBehaviour;
@@ -27,8 +24,7 @@ public class DefaultTrackableEventHandler : MonoBehaviour, ITrackableEventHandle
     protected TrackableBehaviour.Status m_NewStatus;
 
     #endregion // PROTECTED_MEMBER_VARIABLES
-    
-    
+
     #region UNITY_MONOBEHAVIOUR_METHODS
 
     protected virtual void Start()
@@ -102,11 +98,9 @@ public class DefaultTrackableEventHandler : MonoBehaviour, ITrackableEventHandle
         // Enable canvas':
         foreach (var component in canvasComponents)
             component.enabled = true;
-
-        
     }
 
-    
+
     protected virtual void OnTrackingLost()
     {
         var rendererComponents = GetComponentsInChildren<Renderer>(true);

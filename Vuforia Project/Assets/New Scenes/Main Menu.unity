@@ -1474,7 +1474,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4409789074309174, guid: d7abe73372833754f9979a8837b01508, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0.004
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 4409789074309174, guid: d7abe73372833754f9979a8837b01508, type: 2}
       propertyPath: m_LocalPosition.y
@@ -1503,6 +1503,41 @@ Prefab:
     - target: {fileID: 4409789074309174, guid: d7abe73372833754f9979a8837b01508, type: 2}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198171676648956408, guid: d7abe73372833754f9979a8837b01508,
+        type: 2}
+      propertyPath: ShapeModule.m_Texture
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 199441590837605704, guid: d7abe73372833754f9979a8837b01508,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f67280226f6ebef44980215792501d18, type: 2}
+    - target: {fileID: 198171676648956408, guid: d7abe73372833754f9979a8837b01508,
+        type: 2}
+      propertyPath: RotationModule.curve.scalar
+      value: 1.5227997
+      objectReference: {fileID: 0}
+    - target: {fileID: 198171676648956408, guid: d7abe73372833754f9979a8837b01508,
+        type: 2}
+      propertyPath: ShapeModule.m_Scale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198171676648956408, guid: d7abe73372833754f9979a8837b01508,
+        type: 2}
+      propertyPath: ShapeModule.m_Scale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198171676648956408, guid: d7abe73372833754f9979a8837b01508,
+        type: 2}
+      propertyPath: ShapeModule.m_Scale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 199441590837605704, guid: d7abe73372833754f9979a8837b01508,
+        type: 2}
+      propertyPath: m_MaxParticleSize
+      value: 0.03
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d7abe73372833754f9979a8837b01508, type: 2}
